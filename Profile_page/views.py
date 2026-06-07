@@ -137,7 +137,7 @@ def signup(request):
         pwd2=request.POST["password2"]
 
         if pwd1!=pwd2:
-            messages.info(request,"Password doesn't match")
+            messages.info(request,"Password doesn't match .....")
             redirect('signup')
 
         else:
