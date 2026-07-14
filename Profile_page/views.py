@@ -3,7 +3,6 @@ from .models import Profile,Post,Liked_Post,Comment,Follow
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import Profile
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
@@ -17,7 +16,7 @@ def search(request):
         if character in objects.user.username:
             search_users.append({
                 'profile':objects,
-                'bio':objects.bio[0:83]
+                'bio':objects.bio[0:80]
             })
 
     return render(request,"search.html",{"my_profile":my_profile,"search_users":search_users,"caption":character})
@@ -164,7 +163,7 @@ def login(request):
             auth.login(request,user)
             return redirect('/')
         else:
-            messages.info(request,"Invalid Credentials")
+            messages.info(request,"Invalid Credentials .....")
             return redirect('login')
     return render(request,'login.html')
 
